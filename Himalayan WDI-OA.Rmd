@@ -52,10 +52,6 @@ library(activity)
 ## Prepare data
 Correct formats
 ```{r}
-All_in <- All_in_complete %>%
-  select (-`metadata_People`, -`metadata_Species`, -`metadata_Individuals`, -`metadata_Flank`,-`HierarchicalSubject`)
-
-All_in <- read_excel("All_in_analyses.xlsx")
 All_in$Date <- as.Date(All_in$Date, format = "%d/%m/%Y")
 All_in$Time <-as_hms(All_in$Time)
 All_in$Species <- tolower(All_in$Species)
@@ -1024,10 +1020,6 @@ for (i in seq_along(circ_data)) {
 # COVARIATE CHECK-UP
 We merge our focal species dataframe with the ones of covariates to complete the missing info
 ```{r}
-JK_metadata <- read.csv("J.K_metadata rep.csv")
-Covariates <- read_excel("Covariates rep.xlsx")
-Complementary <- read.csv("CT_Locations rep.csv")
-
 Focal_species$Station <- str_trim(Focal_species$Station)
 Covariates$Station <- str_trim(Covariates$Station)
 JK_metadata$Station <- str_trim(JK_metadata$Station)
